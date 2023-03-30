@@ -9,8 +9,14 @@ const routes = [
   },
   {
     path: '/starships',
+    name: 'starships',
+    component: () => import('../views/StarshipsList.vue')
+  },
+  {
+    path: '/starships/:id',
     name: 'starship',
-    component: () => import('../views/StarshipsListView.vue')
+    component: () => import('../views/StarshipDetail.vue'),
+    props: true
   }
 ]
 

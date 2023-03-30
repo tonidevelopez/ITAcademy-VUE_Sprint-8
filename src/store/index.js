@@ -3,7 +3,8 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    starshipsList: []
+    starshipsList: [],
+    starship: []
   },
 
   getters: {
@@ -11,7 +12,10 @@ export default createStore({
 
   mutations: {
     setStarshipsList(state, starships) {
-      state.starshipsList = starships;
+      state.starshipsList = starships
+    },
+    setStarship(state, starshipInfo) {
+      state.starship = starshipInfo
     }
   },
 
@@ -21,6 +25,16 @@ export default createStore({
         const res = await fetch('https://swapi.dev/api/starships/')
         const data = await res.json()
         commit('setStarshipsList', data.results)
+      }
+      catch (error) {
+        console.log(error)
+      }
+    },
+    async fetchStarshipInfo({ commit }, id) {
+      try {
+        const res = await fetch(`https://swapi.dev/api/starships/${id}/`)
+        const data = await res.json()
+        commit('setStarship', data)
       }
       catch (error) {
         console.log(error)
