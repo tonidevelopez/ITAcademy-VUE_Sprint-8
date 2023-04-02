@@ -1,10 +1,10 @@
-import router from '@/router'
 import { createStore } from 'vuex'
 
 export default createStore({
   state: {
     starshipsList: [],
-    starship: []
+    starship: [],
+    currentPage: 1
   },
 
   getters: {
@@ -16,6 +16,14 @@ export default createStore({
     },
     setStarship(state, starshipInfo) {
       state.starship = starshipInfo
+    },
+    setCurrentPage(state) {
+      state.currentPage++;
+    },
+    setMoreStarships(state, moreStarships) {
+      if (state.starshipsList.length < moreStarships.count) {
+        state.starshipsList = state.starshipsList.concat(moreStarships.results);
+      }
     }
   },
 
@@ -39,6 +47,13 @@ export default createStore({
       catch (error) {
         console.log(error)
       }
+    },
+    async fetchMoreStarships({ commit }) {
+      commit('setCurrentPage');
+      const res = await fetch(`https://swapi.dev/api/starships/?page=${this.state.currentPage}`);
+      const data = await res.json();
+      commit('setMoreStarships', data);
+
     }
   },
 
