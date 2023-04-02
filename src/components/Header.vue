@@ -5,6 +5,7 @@
     </router-link>
   </div>
   <nav>
+    <router-link to="/">HOME</router-link>
     <router-link to="/starships">STARSHIPS</router-link>
   </nav>
 </template>

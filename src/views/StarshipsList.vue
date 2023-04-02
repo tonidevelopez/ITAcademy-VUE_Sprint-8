@@ -54,23 +54,4 @@ p {
   font-weight: 400;
   padding: 0 0 10px 10px;
 }
-
-button {
-  background-color: #1D1E1F;
-  color: #AAAAAA;
-  font-family: 'Barlow', Arial, Helvetica, sans-serif;
-  font-weight: 500;
-  border: 1px solid #AAAAAA;
-  border-radius: 20px;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  font-size: 1.1rem;
-  cursor: pointer;
-}
-
-button:hover {
-  color: #ffffff;
-  border-color: #ffffff;
-  background-color: #000000;
-}
 </style>
