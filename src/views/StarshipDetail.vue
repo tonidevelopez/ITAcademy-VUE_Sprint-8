@@ -4,23 +4,25 @@
     <img :src="`https://starwars-visualguide.com/assets/img/starships/${this.id}.jpg`"
       @error="$event.target.src = 'https://starwars-visualguide.com/assets/img/big-placeholder.jpg'" />
   </div>
-  <div>
-    <p>MODEL: {{ starship.model }}</p>
-    <p>STARSHIP CLASS: {{ starship.starship_class }}</p>
-    <p>MANUFACTURER: {{ starship.manufacturer }}</p>
-    <p>COST: {{ starship.cost_in_credits }} credits</p>
+  <div class="detailsTop">
+    <p><span class="features">MODEL:</span> {{ starship.model }}</p>
+    <p><span class="features">STARSHIP CLASS:</span> {{ starship.starship_class }}</p>
+    <p><span class="features">MANUFACTURER:</span> {{ starship.manufacturer }}</p>
+    <p><span class="features">COST:</span> {{ starship.cost_in_credits }} credits</p>
   </div>
-  <div>
-    <p>CREW: {{ starship.crew }}</p>
-    <p>PASSENGER CAPACITY: {{ starship.passengers }}</p>
-    <p>CARGO CAPACITY: {{ starship.cargo_capacity }} tons</p>
-    <p>CONSUMABLES: {{ starship.consumables }}</p>
-  </div>
-  <div>
-    <p>LENGTH: {{ starship.length }} meters</p>
-    <p>MAXIMUM ATMOSPHERING SPEED: {{ starship.max_atmosphering_speed }} km/h</p>
-    <p>HYPERDRIVE RATING: {{ starship.hyperdrive_rating }}</p>
-    <p>MAXIMUM SPEED IN REALSPACE: {{ starship.MGLT }} MGLT</p>
+  <div class="detailsBottom">
+    <div class="detailLeft">
+      <p><span class="features">CREW:</span> {{ starship.crew }}</p>
+      <p><span class="features">PASSENGER CAPACITY:</span> {{ starship.passengers }}</p>
+      <p><span class="features">CARGO CAPACITY:</span> {{ starship.cargo_capacity }} tons</p>
+      <p><span class="features">CONSUMABLES:</span> {{ starship.consumables }}</p>
+    </div>
+    <div class="detailRight">
+      <p><span class="features">LENGTH:</span> {{ starship.length }} meters</p>
+      <p><span class="features">MAXIMUM ATMOSPHERING SPEED:</span> {{ starship.max_atmosphering_speed }} km/h</p>
+      <p><span class="features">HYPERDRIVE RATING:</span> {{ starship.hyperdrive_rating }}</p>
+      <p><span class="features">MAXIMUM SPEED IN REALSPACE:</span> {{ starship.MGLT }} MGLT</p>
+    </div>
   </div>
 </template>
 
@@ -42,3 +44,28 @@ export default {
 }
 
 </script>
+
+<style scoped>
+h1 {
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+img {
+  background-color: #000000;
+  max-width: 90%;
+  padding: 10px;
+}
+
+.detailsBottom {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  padding: 10px;
+  gap: 200px;
+}
+
+.features {
+  color: #ffffff;
+}
+</style>
