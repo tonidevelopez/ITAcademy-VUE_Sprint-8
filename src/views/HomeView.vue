@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Welcome to this Statships Databank</h1>
+    <h1>Welcome to this Starships Databank</h1>
     <h2>May the Force of VUE be with you!</h2>
     <router-link to="/starships">
       <button>STARSHIPS DATABANK</button>

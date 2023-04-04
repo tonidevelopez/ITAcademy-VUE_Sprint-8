@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapMutations } from 'vuex';
 import Header from '@/components/Header.vue';
 
 export default {
@@ -13,9 +13,11 @@ export default {
   },
   methods: {
     ...mapActions(['fetchStarships']),
+    ...mapMutations(['checkDataBase'])
   },
   mounted() {
     this.fetchStarships()
+    this.checkDataBase()
   }
 }
 </script>
