@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import store from '@/store'
 
 const routes = [
   {
@@ -10,7 +11,14 @@ const routes = [
   {
     path: '/starships',
     name: 'starships',
-    component: () => import('../views/StarshipsList.vue')
+    component: () => import('../views/StarshipsList.vue'),
+    beforeEnter: (to, from, next) => {
+      if (!store.state.logged) {
+        store.commit('toggleLoginModal')
+      } else {
+        next()
+      }
+    }
   },
   {
     path: '/starships/:id',
