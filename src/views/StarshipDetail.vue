@@ -24,22 +24,34 @@
       <p><span class="features">MAXIMUM SPEED IN REALSPACE:</span> {{ starship.MGLT }} MGLT</p>
     </div>
   </div>
+  <div>
+    <Pilots :pilots="pilots" />
+  </div>
+  <div v-if="!pilots.length">
+    <p class="features">There are no pilots in our database</p>
+  </div>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapMutations, mapState } from 'vuex'
+import Pilots from '@/components/Pilots.vue'
 
 export default {
   name: 'StarshipDetail',
+  components: { Pilots },
   props: ['id'],
   computed: {
-    ...mapState(['starship'])
+    ...mapState(['starship', 'pilots'])
   },
   methods: {
-    ...mapActions(['fetchStarshipInfo'])
+    ...mapActions(['fetchStarshipInfo']),
+    ...mapMutations(['emptyPilots'])
   },
   mounted() {
     this.fetchStarshipInfo(this.id)
+  },
+  unmounted() {
+    this.emptyPilots()
   }
 }
 
@@ -50,6 +62,7 @@ h1 {
   color: #ffffff;
   text-transform: uppercase;
 }
+
 
 img {
   background-color: #000000;

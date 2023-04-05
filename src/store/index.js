@@ -5,6 +5,7 @@ export default createStore({
   state: {
     starshipsList: [],
     starship: [],
+    pilots: [],
     currentPage: 1,
     users: [],
     logged: false,
@@ -22,6 +23,18 @@ export default createStore({
     },
     setStarship(state, starshipInfo) {
       state.starship = starshipInfo
+    },
+    setPilots(state, pilotsData) {
+      pilotsData.forEach((url) => {
+        fetch(url)
+          .then((response) => response.json())
+          .then((data) => {
+            state.pilots.push(data);
+          });
+      });
+    },
+    emptyPilots(state) {
+      state.pilots = [];
     },
     setCurrentPage(state) {
       state.currentPage++;
@@ -97,7 +110,8 @@ export default createStore({
       try {
         const res = await fetch(`https://swapi.dev/api/starships/${id}/`)
         const data = await res.json()
-        commit('setStarship', data)
+        commit('setStarship', data),
+          commit('setPilots', data.pilots)
       }
       catch (error) {
         console.log(error)
