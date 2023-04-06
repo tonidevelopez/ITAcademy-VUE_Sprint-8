@@ -19,6 +19,9 @@
         </div>
       </div>
     </div>
+    <div v-if="!pilots.length">
+      <p>There are no pilots in our database</p>
+    </div>
   </div>
 </template>
 
@@ -35,6 +38,7 @@ export default {
   margin: 10px auto;
   background-color: #1D1E1Fcc;
   border-radius: 5px;
+  padding-bottom: 5px;
 }
 
 .pilot-top {

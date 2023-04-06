@@ -13,7 +13,7 @@ import { mapActions, mapState } from 'vuex';
 export default {
   name: 'StarshipsList',
   computed: {
-    ...mapState(['starshipsList', 'currentPage'])
+    ...mapState(['starshipsList', 'currentPageStarships'])
   },
   methods: {
     ...mapActions(['fetchStarships', 'fetchMoreStarships']),

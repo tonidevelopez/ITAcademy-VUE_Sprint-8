@@ -27,9 +27,6 @@
   <div>
     <Pilots :pilots="pilots" />
   </div>
-  <div v-if="!pilots.length">
-    <p class="features">There are no pilots in our database</p>
-  </div>
 </template>
 
 <script>

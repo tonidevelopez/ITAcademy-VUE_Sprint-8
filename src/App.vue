@@ -12,12 +12,13 @@ export default {
     Header
   },
   methods: {
-    ...mapActions(['fetchStarships']),
-    ...mapMutations(['checkDataBase'])
+    ...mapActions(['fetchStarships', 'fetchCharacters']),
+    ...mapMutations(['checkDataBase']),
   },
   mounted() {
     this.fetchStarships()
     this.checkDataBase()
+    this.fetchCharacters()
   }
 }
 </script>

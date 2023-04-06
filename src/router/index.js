@@ -25,6 +25,24 @@ const routes = [
     name: 'starship',
     component: () => import('../views/StarshipDetail.vue'),
     props: true
+  },
+  {
+    path: '/characters',
+    name: 'characters',
+    component: () => import('../views/CharactersList.vue'),
+    beforeEnter: (to, from, next) => {
+      if (!store.state.logged) {
+        store.commit('toggleLoginModal')
+      } else {
+        next()
+      }
+    }
+  },
+  {
+    path: '/characters/:id',
+    name: 'character',
+    component: () => import('../views/CharacterDetail.vue'),
+    props: true
   }
 ]
 

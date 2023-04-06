@@ -10,7 +10,8 @@
   </div>
   <nav>
     <router-link to="/">HOME</router-link>
-    <router-link class="starships-border" to="/starships">STARSHIPS</router-link>
+    <router-link to="/starships">STARSHIPS</router-link>
+    <router-link to="/characters">CHARACTERS</router-link>
   </nav>
   <div v-if="loginModal">
     <LogIn />
